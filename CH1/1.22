@@ -1,0 +1,6 @@
+> (define (rangeprimes first last)
+      (define (search cur last)
+         (if (<= cur last) (if (prime? cur) (timed-prime cur)))
+         (if (<= cur last) (search (+ 2 cur) last)))
+      (search (if (even? first) (+ 1 first) first) 
+              (if (even? last) (- last 1) last)))

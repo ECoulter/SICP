@@ -1,0 +1,16 @@
+(define (same-parity x . z)
+  (define (par-loop L z test?)
+;builds the list in reverse order - hence the reverse in the return!
+    (if (null? z)
+        (reverse L)
+        (if (test? (car z))
+              (par-loop (cons (car z) L) (cdr z) test?)
+              (par-loop L (cdr z) test?)
+        )
+    )
+  )
+;check parity of x
+  (if (even? x)
+       (par-loop (list x) z even?)
+       (par-loop (list x) z odd?))
+)
